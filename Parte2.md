@@ -1,1 +1,1 @@
-![Parte1](./media/p2.png)
+![Parte2](./media/p2.png)
