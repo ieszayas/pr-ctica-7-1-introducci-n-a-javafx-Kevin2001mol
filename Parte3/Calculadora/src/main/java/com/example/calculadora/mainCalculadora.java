@@ -21,9 +21,5 @@ public class mainCalculadora extends Application {
     public static void main(String[] args) {
         launch();
     }
-
-
-
-
-
+    
 }
