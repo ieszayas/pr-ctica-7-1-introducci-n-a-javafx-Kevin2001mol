@@ -73,11 +73,13 @@ public class Calculadora {
     }
 
     private String formatResult(double result) {
-        String resultStr = String.format("%.5f", result);
-        if (isPeriodic(resultStr)) {
-            resultStr = resultStr + "p";
+        // Verificar si el resultado es un número entero
+        if (result == (long) result) {
+            return String.format("%d", (long) result); // No mostrar decimales si es un número entero
+        } else {
+            // Formatear el número a máximo 5 decimales
+            return String.format("%.5f", result).replaceAll("\\.?0*$", ""); // Eliminar decimales innecesarios
         }
-        return resultStr;
     }
 
     private boolean isPeriodic(String resultStr) {
