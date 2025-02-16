@@ -262,6 +262,21 @@ public class Calculadora {
         primerNumero = 0;
         esOperacionRealizada = false;
     }
+    public void onClickParentesis(ActionEvent mouseEvent) {
+        String textoActual = f_resultado.getText();
+
+        // Contar paréntesis abiertos y cerrados
+        long abiertos = textoActual.chars().filter(ch -> ch == '(').count();
+        long cerrados = textoActual.chars().filter(ch -> ch == ')').count();
+
+        if (abiertos > cerrados) {
+            // Si hay más paréntesis abiertos, añadir un ")"
+            f_resultado.setText(textoActual + ")");
+        } else {
+            // Si no, añadir un "("
+            f_resultado.setText(textoActual + "(");
+        }
+    }
 
     private void mostrarAdvertencia(String mensaje) {
         Platform.runLater(() -> {
