@@ -22,55 +22,11 @@ public class Calculadora {
         if (textoResultado.isEmpty() || operador.isEmpty()) {
             System.out.println("Faltan valores para realizar la operación");
         } else {
-            realizarOperacion();
+            //realizarOperacion();
         }
     }
 
-    public void realizarOperacion() {
-        try {
-            String textoResultado = f_resultado.getText();
-            String[] partes = textoResultado.split("[-+X/%]");
 
-            if (partes.length < 2) {
-                System.out.println("Expresión incompleta");
-                return;
-            }
-
-            double segundoNumero = Double.parseDouble(partes[1]);
-            double resultado = 0;
-
-            switch (operador) {
-                case "+":
-                    resultado = primerNumero + segundoNumero;
-                    break;
-                case "-":
-                    resultado = primerNumero - segundoNumero;
-                    break;
-                case "X":
-                    resultado = primerNumero * segundoNumero;
-                    break;
-                case "/":
-                    if (segundoNumero != 0) {
-                        resultado = primerNumero / segundoNumero;
-                    } else {
-                        mostrarAdvertencia("No puedes dividir por cero.");
-                        return;
-                    }
-                    break;
-                case "%":
-                    resultado = primerNumero * (segundoNumero / 100);
-                    break;
-            }
-
-            String resultadoFormateado = formatResult(resultado);
-            f_resultado.setText(resultadoFormateado);
-            operador = "";
-            esOperacionRealizada = true;
-        } catch (NumberFormatException e) {
-            mostrarAdvertencia("Error al procesar la operación.");
-            System.out.println("Error al procesar la operación: " + e.getMessage());
-        }
-    }
 
     private String formatResult(double result) {
         // Verificar si el resultado es un número entero
@@ -178,7 +134,7 @@ public class Calculadora {
     public void onClickPulsarIgualar(ActionEvent mouseEvent) {
         limpiarSiError();
         if (!operador.isEmpty()) {
-            realizarOperacion();
+            //realizarOperacion();
         }
     }
 
