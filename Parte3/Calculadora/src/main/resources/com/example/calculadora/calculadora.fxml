@@ -22,7 +22,7 @@
                <Font size="36.0" />
             </font>
          </Label>
-         <HBox layoutY="93.0" prefHeight="225.0" prefWidth="229.0" spacing="10.0">
+         <HBox layoutY="93.0" prefHeight="225.0" prefWidth="237.0" spacing="10.0">
             <children>
                <VBox prefHeight="227.0" prefWidth="38.0" spacing="10.0">
                   <children>

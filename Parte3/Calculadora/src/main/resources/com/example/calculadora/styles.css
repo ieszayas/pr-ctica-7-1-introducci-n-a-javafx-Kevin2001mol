@@ -1,0 +1,37 @@
+/* styles.css */
+
+/* Fondo general de la aplicación */
+.root {
+    -fx-background-color: #f5f5f5;
+}
+
+/* Estilo para los botones */
+.button {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 8 16 8 16;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+}
+
+/* Estilo para el display de resultados */
+.label {
+    -fx-font-size: 24px;
+    -fx-text-fill: #333333;
+}
+
+/* Puedes agregar estilos específicos para ciertos controles utilizando id's o clases */
+#f_resultado {
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1px;
+    -fx-background-color: white;
+    -fx-padding: 10px;
+}
+
+/* Estilo para el historial */
+#label_historial {
+    -fx-font-size: 16px;
+    -fx-text-fill: #666666;
+    -fx-padding: 5px;
+}

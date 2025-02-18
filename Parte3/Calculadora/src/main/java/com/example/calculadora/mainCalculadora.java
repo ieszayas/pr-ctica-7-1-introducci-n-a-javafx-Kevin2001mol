@@ -15,10 +15,10 @@ public class mainCalculadora extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(mainCalculadora.class.getResource("calculadora.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        // Añadir la hoja de estilos
 
 
-        //scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
+        // Cargar el archivo CSS
+        scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
 
         stage.setScene(scene);
         stage.setTitle("Mi Aplicación JavaFX");
