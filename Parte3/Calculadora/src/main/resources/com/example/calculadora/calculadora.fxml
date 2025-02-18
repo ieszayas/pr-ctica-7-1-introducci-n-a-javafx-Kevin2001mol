@@ -22,7 +22,7 @@
                <Font size="36.0" />
             </font>
          </Label>
-         <HBox layoutX="14.0" layoutY="90.0" prefHeight="225.0" prefWidth="187.0" spacing="10.0">
+         <HBox layoutY="93.0" prefHeight="225.0" prefWidth="229.0" spacing="10.0">
             <children>
                <VBox prefHeight="227.0" prefWidth="38.0" spacing="10.0">
                   <children>
@@ -58,6 +58,14 @@
                      <Button fx:id="b_menos" mnemonicParsing="false" onAction="#onClickOperacion" prefHeight="35.0" prefWidth="38.0" text="-" />
                      <Button fx:id="b_mas" mnemonicParsing="false" onAction="#onClickOperacion" prefHeight="35.0" prefWidth="38.0" text="+" />
                      <Button fx:id="bCalcular" onAction="#onClickCalcular" prefHeight="35.0" prefWidth="38.0" text="=" />
+                  </children>
+               </VBox>
+               <VBox prefHeight="225.0" prefWidth="43.0" spacing="10.0">
+                  <children>
+                     <Button fx:id="sacarMemoriaButon" mnemonicParsing="false" onAction="#cogerMemoria" prefHeight="35.0" prefWidth="38.0" text="M+" />
+                     <Button fx:id="memoriaCero" mnemonicParsing="false" onAction="#resetMemoria" prefHeight="35.0" prefWidth="38.0" text="MC" />
+                     <Button fx:id="recuMemoria" mnemonicParsing="false" onAction="#recuperarMemoria" prefHeight="35.0" prefWidth="38.0" text="MR" />
+                     <Button fx:id="masMenos" mnemonicParsing="false" onAction="#cambiarSigno" prefHeight="35.0" prefWidth="38.0" text="+/-" />
                   </children>
                </VBox>
             </children>

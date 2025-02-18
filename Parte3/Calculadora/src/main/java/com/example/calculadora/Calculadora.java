@@ -11,6 +11,8 @@ import javafx.animation.PauseTransition;
 import javafx.util.Duration;
 
 public class Calculadora {
+    private String memoria = "";
+    private boolean usandoMemoria = false;
     @FXML
     private Label f_resultado;
     @FXML
@@ -33,14 +35,22 @@ public class Calculadora {
 
     @FXML
     protected void onClickCalcular() {
-        if (operador.isEmpty() || f_resultado.getText().isEmpty()) {
-            mostrarAdvertencia("Faltan valores para realizar la operación");
-        } else {
-            // Actualizamos el historial con la operación completa (por ejemplo, "-8+(-3)=")
-            label_historial.setText(historialOperacion + f_resultado.getText() + "=");
-            realizarOperacion();
+        String current = f_resultado.getText().trim();
+        if (current.isEmpty()) {
+            mostrarAdvertencia("No hay número para calcular");
+            return;
         }
+        // Si no se ha seleccionado ningún operador, se muestra el mismo número en el historial con '='
+        if (operador.isEmpty()) {
+            label_historial.setText(current + "=");
+            // Se mantiene el número en el display
+            return;
+        }
+        // En caso de que se haya seleccionado un operador, se actualiza el historial y se realiza la operación
+        label_historial.setText(historialOperacion + current + "=");
+        realizarOperacion();
     }
+
 
     /**
      * Maneja el uso del botón de paréntesis para ingresar números negativos en el segundo operando.
@@ -101,32 +111,43 @@ public class Calculadora {
      */
     private void realizarOperacion() {
         String text = f_resultado.getText();
-        // Si el segundo operando se inició con "(-" pero no se cerró, se pide cerrar manualmente.
+
+        // Verificar y completar el manejo de paréntesis para números negativos (si corresponde)
         if (text.startsWith("(-") && !text.endsWith(")")) {
             mostrarAdvertencia("Cierre el paréntesis para el operando negativo.");
             return;
         }
-        // Si el número está entre paréntesis, se transforma a su representación negativa.
         if (text.startsWith("(-") && text.endsWith(")")) {
             text = "-" + text.substring(2, text.length() - 1);
         }
         text = text.replace(',', '.');
+
         double segundoNumero = modelo.convertirNumero(text);
         if (Double.isNaN(segundoNumero)) {
             f_resultado.setText("Error");
             return;
         }
+
         double resultado = modelo.calcular(primerNumero, segundoNumero, operador);
-        if (Double.isNaN(resultado)) {
-            f_resultado.setText("Error");
+        if (!Double.isNaN(resultado)) {
+            String resultStr = CalculadoraUtils.formatResult(resultado);
+            f_resultado.setText(resultStr);
+            // Solo se actualiza la memoria si se usó el botón de memoria en la operación.
+            if (usandoMemoria) {
+                memoria = resultStr;
+                usandoMemoria = false;  // Reiniciamos la bandera para futuras operaciones.
+            }
         } else {
-            f_resultado.setText(CalculadoraUtils.formatResult(resultado));
+            f_resultado.setText("Error");
         }
+
         operador = "";
         esOperacionRealizada = true;
         esperandoSegundoOperando = false;
         historialOperacion = "";
     }
+
+
 
 
     /**
@@ -240,6 +261,37 @@ public class Calculadora {
             f_resultado.setText("");
         }
     }
+    @FXML
+    public void cambiarSigno(ActionEvent event) {
+        String current = f_resultado.getText().trim();
+
+        // Si el display está vacío, no hacemos nada
+        if(current.isEmpty()) {
+            return;
+        }
+
+        String parsedNumber = current;
+        // Si el número está en formato con paréntesis, por ejemplo "(-3)", lo convertimos a "-3"
+        if(current.startsWith("(-") && current.endsWith(")")) {
+            parsedNumber = "-" + current.substring(2, current.length() - 1);
+        }
+
+        try {
+            // Convertimos el número (reemplazamos la coma por punto si fuera necesario)
+            double value = Double.parseDouble(parsedNumber.replace(',', '.'));
+            double toggled = -value;
+            // Formateamos el resultado utilizando tu método de utilidades
+            String formatted = CalculadoraUtils.formatResult(toggled);
+            f_resultado.setText(formatted);
+
+            // Opcional: si estás mostrando el historial y deseas actualizarlo, puedes hacerlo aquí.
+            // Por ejemplo, si el historial contiene el número actual, reemplázalo.
+            // En este ejemplo se deja sin modificar el label_historial.
+
+        } catch(NumberFormatException e) {
+            mostrarAdvertencia("No se puede cambiar el signo");
+        }
+    }
 
     /**
      * Muestra un "toast" no modal que se autodesvanece después de 2 segundos.
@@ -258,4 +310,69 @@ public class Calculadora {
             delay.play();
         });
     }
+    @FXML
+    public void cogerMemoria(ActionEvent event) {
+        String currentText = f_resultado.getText().trim();
+
+        if (currentText.isEmpty()) {
+            mostrarAdvertencia("No hay nada para guardar en la memoria.");
+            return;
+        }
+
+        try {
+            // Convertir el número actual (reemplazando coma por punto si es necesario)
+            double currentNumber = modelo.convertirNumero(currentText.replace(',', '.'));
+            double memoryNumber;
+
+            if (memoria.isEmpty()) {
+                // Primera vez: se guarda el número actual en memoria.
+                memoryNumber = currentNumber;
+            } else {
+                // Usos posteriores: se suma el número actual con el valor guardado en memoria.
+                double storedNumber = modelo.convertirNumero(memoria.replace(',', '.'));
+                memoryNumber = storedNumber + currentNumber;
+            }
+
+            // Formatear el nuevo valor de memoria.
+            String newMemory = CalculadoraUtils.formatResult(memoryNumber);
+            memoria = newMemory;
+            usandoMemoria = true;  // Se marca que se está usando la memoria en esta operación.
+
+            // Se actualiza el display y el historial para reflejar la acción.
+            f_resultado.setText(newMemory);
+            label_historial.setText("MR = " + newMemory);
+            mostrarAdvertencia("Memoria actualizada: " + newMemory);
+        } catch (Exception e) {
+            mostrarAdvertencia("Error al procesar la memoria.");
+        }
+    }
+    @FXML
+    public void resetMemoria(ActionEvent event) {
+        memoria = "0";
+        label_historial.setText("MR = 0");
+        mostrarAdvertencia("Memoria reiniciada a 0");
+    }
+
+    @FXML
+    public void recuperarMemoria(ActionEvent event) {
+        if (memoria.isEmpty()) {
+            mostrarAdvertencia("No hay memoria almacenada.");
+            return;
+        }
+
+        // Si se está esperando el segundo operando (por ejemplo, después de pulsar un operador)
+        if (esperandoSegundoOperando) {
+            // Se inserta el valor de la memoria como el segundo operando
+            f_resultado.setText(memoria);
+            label_historial.setText(historialOperacion + memoria);
+            esperandoSegundoOperando = false; // Se marca que ya se ha ingresado el segundo operando
+        } else {
+            // Si no se está en medio de una operación, simplemente se muestra la memoria
+            f_resultado.setText(memoria);
+            label_historial.setText("MR = " + memoria);
+        }
+    }
+
+
+
 }
