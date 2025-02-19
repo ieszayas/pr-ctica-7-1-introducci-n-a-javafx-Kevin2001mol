@@ -8,21 +8,21 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="394.0" prefWidth="269.0" spacing="20.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.calculadora.Calculadora">
+<VBox alignment="CENTER" prefHeight="509.0" prefWidth="299.0" spacing="20.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.calculadora.Calculadora">
 
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
 
-   <Pane prefHeight="332.0" prefWidth="323.0">
+   <Pane prefHeight="364.0" prefWidth="259.0">
       <children>
          <!-- Reemplazo del Label -->
-         <Label fx:id="f_resultado" alignment="CENTER_RIGHT" layoutX="14.0" layoutY="31.0" prefHeight="49.0" prefWidth="187.0" textAlignment="RIGHT">
+         <Label fx:id="f_resultado" alignment="CENTER_RIGHT" layoutX="11.0" layoutY="61.0" prefHeight="53.0" prefWidth="237.0" textAlignment="RIGHT">
             <font>
                <Font size="36.0" />
             </font>
          </Label>
-         <HBox layoutY="93.0" prefHeight="225.0" prefWidth="237.0" spacing="10.0">
+         <HBox layoutX="11.0" layoutY="131.0" prefHeight="225.0" prefWidth="237.0" spacing="10.0">
             <children>
                <VBox prefHeight="227.0" prefWidth="38.0" spacing="10.0">
                   <children>
@@ -70,7 +70,7 @@
                </VBox>
             </children>
          </HBox>
-         <Label fx:id="label_historial" layoutX="16.0" layoutY="14.0" prefHeight="17.0" prefWidth="181.0" text="Historial" />
+         <Label fx:id="label_historial" alignment="CENTER_RIGHT" layoutX="11.0" layoutY="22.0" prefHeight="17.0" prefWidth="237.0" text="Historial" textAlignment="RIGHT" />
       </children>
    </Pane>
 </VBox>
