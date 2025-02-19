@@ -19,7 +19,7 @@ public class mainCalculadora extends Application {
         scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
         // Agregar el icono de la aplicación
         Image icono = new Image(getClass().getResourceAsStream("/com/example/calculadora/IconoCalculadoraP.png"));
-        stage.getIcons().add(icono);
+        stage.getIcons().add(icono); //.webp no lo coge bien.
 
 
         stage.setScene(scene);
