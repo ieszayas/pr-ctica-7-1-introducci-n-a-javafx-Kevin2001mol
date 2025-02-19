@@ -3,12 +3,10 @@ package com.example.calculadora;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
+import javafx.scene.image.Image;
 import java.io.IOException;
-import java.net.URL;
-import java.util.Objects;
+
 
 public class mainCalculadora extends Application {
     @Override
@@ -19,9 +17,13 @@ public class mainCalculadora extends Application {
 
         // Cargar el archivo CSS
         scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
+        // Agregar el icono de la aplicación
+        Image icono = new Image(getClass().getResourceAsStream("/com/example/calculadora/IconoCalculadoraP.png"));
+        stage.getIcons().add(icono);
+
 
         stage.setScene(scene);
-        stage.setTitle("Mi Aplicación JavaFX");
+        stage.setTitle("Mi Calculadora");
         stage.show();
     }
 
