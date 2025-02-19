@@ -30,7 +30,7 @@
                      <Button fx:id="b_7" mnemonicParsing="false" onAction="#onClickNumero" prefHeight="35.0" prefWidth="38.0" text="7" />
                      <Button fx:id="b_4" mnemonicParsing="false" onAction="#onClickNumero" prefHeight="35.0" prefWidth="38.0" text="4" />
                      <Button fx:id="b_1" mnemonicParsing="false" onAction="#onClickNumero" prefHeight="35.0" prefWidth="38.0" text="1" />
-                     <Button fx:id="b_parentesis" mnemonicParsing="false" onAction="#onClickParentesis" prefHeight="35.0" prefWidth="38.0" text="()" />
+                     <Button fx:id="b_parentesis" mnemonicParsing="false" onAction="#onClickParentesis" prefHeight="35.0" prefWidth="38.0" text="( )" />
                   </children>
                </VBox>
                <VBox prefHeight="227.0" prefWidth="38.0" spacing="10.0">
