@@ -1,4 +1,4 @@
-package com.example.calculadora;
+package com.example.modelo;
 
 public class CalculadoraUtils {
 
