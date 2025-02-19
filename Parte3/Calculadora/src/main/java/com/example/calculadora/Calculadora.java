@@ -1,7 +1,5 @@
 package com.example.calculadora;
 
-import com.example.modelo.CalculadoraModelo;
-import com.example.modelo.CalculadoraUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
