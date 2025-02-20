@@ -24,7 +24,7 @@ public class MainControlador {
     @FXML
     public void cargarCalculadoraCientifica() {
         try {
-            Parent cientifica = FXMLLoader.load(getClass().getResource("CalculadoraCientifica.fxml"));
+            Parent cientifica = FXMLLoader.load(getClass().getResource("calculadoraCientifica.fxml"));
             rootPane.setCenter(cientifica);
         } catch (IOException e) {
             e.printStackTrace();
