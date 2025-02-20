@@ -1,6 +1,5 @@
-package com.example.calculadora;
+package Controlador;
 
-import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,7 +17,7 @@ public class MainControlador implements Initializable {
     @FXML
     public void cargarCalculadoraNormal() {
         try {
-            Parent normal = FXMLLoader.load(getClass().getResource("calculadora.fxml"));
+            Parent normal = FXMLLoader.load(getClass().getResource("/Vista/calculadora.fxml"));
             BorderPane.setCenter(normal);
         } catch (IOException e) {
             e.printStackTrace();
@@ -28,7 +27,7 @@ public class MainControlador implements Initializable {
     @FXML
     public void cargarCalculadoraCientifica() {
         try {
-            Parent cientifica = FXMLLoader.load(getClass().getResource("CalculadoraCientifica.fxml"));
+            Parent cientifica = FXMLLoader.load(getClass().getResource("/Vista/CalculadoraCientifica.fxml"));
             BorderPane.setCenter(cientifica);
         } catch (IOException e) {
             e.printStackTrace();

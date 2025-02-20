@@ -7,4 +7,8 @@ module com.example.calculadora {
 
     opens com.example.calculadora to javafx.fxml;
     exports com.example.calculadora;
+    exports Controlador;
+    opens Controlador to javafx.fxml;
+    exports Modelo;
+    opens Modelo to javafx.fxml;
 }

@@ -1,4 +1,4 @@
-package com.example.calculadora;
+package Modelo;
 
 public class CalculadoraUtils {
 
@@ -9,4 +9,5 @@ public class CalculadoraUtils {
             return String.format("%.5f", result).replaceAll("\\.?0*$", "");
         }
     }
+
 }

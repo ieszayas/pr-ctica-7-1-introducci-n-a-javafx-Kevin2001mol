@@ -1,5 +1,7 @@
-package com.example.calculadora;
+package Controlador;
 
+import Modelo.CalculadoraModelo;
+import Modelo.CalculadoraUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -10,9 +12,7 @@ import javafx.stage.Stage;
 import javafx.animation.PauseTransition;
 import javafx.util.Duration;
 
-import java.awt.*;
-
-public class CalculadoraCientificaControlador {
+public class CalculadoraNormalControlador {
     private String memoria = "";
     private boolean usandoMemoria = false;
     @FXML
@@ -29,8 +29,6 @@ public class CalculadoraCientificaControlador {
 
     private CalculadoraModelo modelo = new CalculadoraModelo();
 
-    // Instancia de la clase que contiene los métodos científicos
-    private CalculadoraCientifica calcCientifica = new CalculadoraCientifica();
     @FXML
     public void initialize() {
         f_resultado.setText("");
@@ -376,78 +374,6 @@ public class CalculadoraCientificaControlador {
             label_historial.setText("MR = " + memoria);
         }
     }
-    /**
-     * Método para calcular el seno del ángulo ingresado (en grados).
-     */
-    @FXML
-    public void onClickSeno() {
-        try {
-            double angulo = Double.parseDouble(label_historial.getText());
-            double resultado = calcCientifica.calcularSeno(angulo);
-            f_resultado.setText(CalculadoraUtils.formatResult(resultado));
-        } catch (NumberFormatException e) {
-            f_resultado.setText("Error: Entrada inválida");
-        }
-    }
-
-    /**
-     * Método para calcular el coseno del ángulo ingresado (en grados).
-     */
-    @FXML
-    public void onClickCoseno() {
-        try {
-            double angulo = Double.parseDouble(label_historial.getText());
-            double resultado = calcCientifica.calcularCoseno(angulo);
-            f_resultado.setText(CalculadoraUtils.formatResult(resultado));
-        } catch (NumberFormatException e) {
-            f_resultado.setText("Error: Entrada inválida");
-        }
-    }
-
-    /**
-     * Método para calcular la tangente del ángulo ingresado (en grados).
-     */
-    @FXML
-    public void onClickTangente() {
-        try {
-            double angulo = Double.parseDouble(label_historial.getText());
-            double resultado = calcCientifica.calcularTangente(angulo);
-            f_resultado.setText(CalculadoraUtils.formatResult(resultado));
-        } catch (NumberFormatException e) {
-            f_resultado.setText("Error: Entrada inválida");
-        }
-    }
-
-    /**
-     * Método para calcular la exponencial de un número (e^x).
-     */
-    @FXML
-    public void onClickExponencial() {
-        try {
-            double exponente = Double.parseDouble(label_historial.getText());
-            double resultado = calcCientifica.calcularExponencial(exponente);
-            f_resultado.setText(CalculadoraUtils.formatResult(resultado));
-        } catch (NumberFormatException e) {
-            f_resultado.setText("Error: Entrada inválida");
-        }
-    }
-
-    /**
-     * Método para calcular el logaritmo natural (ln) del valor ingresado.
-     */
-    @FXML
-    public void onClickLogaritmo() {
-        try {
-            double valor = Double.parseDouble(label_historial.getText());
-            double resultado = calcCientifica.calcularLogaritmo(valor);
-            f_resultado.setText(CalculadoraUtils.formatResult(resultado));
-        } catch (NumberFormatException e) {
-            f_resultado.setText("Error: Entrada inválida");
-        } catch (IllegalArgumentException e) {
-            f_resultado.setText("Error: " + e.getMessage());
-        }
-    }
-
 
 
 

@@ -11,19 +11,19 @@ import java.io.IOException;
 public class mainCalculadora extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(mainCalculadora.class.getResource("MainLayout.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(mainCalculadora.class.getResource("/Vista/MainLayout.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
 
 
         // Cargar el archivo CSS
-        scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/Vista/styles.css").toExternalForm());
         // Agregar el icono de la aplicación
         Image icono = new Image(getClass().getResourceAsStream("/com/example/calculadora/IconoCalculadoraP.png"));
         stage.getIcons().add(icono); //.webp no lo coge bien.
 
 
         stage.setScene(scene);
-        stage.setTitle("Mi Calculadora");
+        stage.setTitle("Mi CalculadoraNormalControlador");
         stage.show();
     }
 
