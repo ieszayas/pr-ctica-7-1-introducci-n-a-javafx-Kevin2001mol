@@ -15,8 +15,8 @@
               <menus>
                 <Menu fx:id="menuModo" mnemonicParsing="false" text="Modo">
                   <items>
-                    <MenuItem fx:id="itemCalculadora" mnemonicParsing="false" text="Calculadora" />
-                        <MenuItem fx:id="itemCientifica" mnemonicParsing="false" text="Cientifica" />
+                    <MenuItem fx:id="itemCalculadora" mnemonicParsing="false" onAction="#cargarCalculadoraNormal" text="Calculadora" />
+                        <MenuItem fx:id="itemCientifica" mnemonicParsing="false" onAction="#cargarCalculadoraCientifica" text="Cientifica" />
                   </items>
                 </Menu>
                 <Menu fx:id="menuEdicion" mnemonicParsing="false" text="Edicion">
