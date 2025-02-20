@@ -28,11 +28,6 @@ public class CalculadoraCientificaControlador {
     private String historialOperacion = "";
 
     private CalculadoraModelo modelo = new CalculadoraModelo();
-    @FXML
-    private TextField txtEntrada;
-
-    @FXML
-    private TextField txtResultado;
 
     // Instancia de la clase que contiene los métodos científicos
     private CalculadoraCientifica calcCientifica = new CalculadoraCientifica();
@@ -387,11 +382,11 @@ public class CalculadoraCientificaControlador {
     @FXML
     public void onClickSeno() {
         try {
-            double angulo = Double.parseDouble(txtEntrada.getText());
+            double angulo = Double.parseDouble(label_historial.getText());
             double resultado = calcCientifica.calcularSeno(angulo);
-            txtResultado.setText(CalculadoraUtils.formatResult(resultado));
+            f_resultado.setText(CalculadoraUtils.formatResult(resultado));
         } catch (NumberFormatException e) {
-            txtResultado.setText("Error: Entrada inválida");
+            f_resultado.setText("Error: Entrada inválida");
         }
     }
 
@@ -401,11 +396,11 @@ public class CalculadoraCientificaControlador {
     @FXML
     public void onClickCoseno() {
         try {
-            double angulo = Double.parseDouble(txtEntrada.getText());
+            double angulo = Double.parseDouble(label_historial.getText());
             double resultado = calcCientifica.calcularCoseno(angulo);
-            txtResultado.setText(CalculadoraUtils.formatResult(resultado));
+            f_resultado.setText(CalculadoraUtils.formatResult(resultado));
         } catch (NumberFormatException e) {
-            txtResultado.setText("Error: Entrada inválida");
+            f_resultado.setText("Error: Entrada inválida");
         }
     }
 
@@ -415,11 +410,11 @@ public class CalculadoraCientificaControlador {
     @FXML
     public void onClickTangente() {
         try {
-            double angulo = Double.parseDouble(txtEntrada.getText());
+            double angulo = Double.parseDouble(label_historial.getText());
             double resultado = calcCientifica.calcularTangente(angulo);
-            txtResultado.setText(CalculadoraUtils.formatResult(resultado));
+            f_resultado.setText(CalculadoraUtils.formatResult(resultado));
         } catch (NumberFormatException e) {
-            txtResultado.setText("Error: Entrada inválida");
+            f_resultado.setText("Error: Entrada inválida");
         }
     }
 
@@ -429,11 +424,11 @@ public class CalculadoraCientificaControlador {
     @FXML
     public void onClickExponencial() {
         try {
-            double exponente = Double.parseDouble(txtEntrada.getText());
+            double exponente = Double.parseDouble(label_historial.getText());
             double resultado = calcCientifica.calcularExponencial(exponente);
-            txtResultado.setText(CalculadoraUtils.formatResult(resultado));
+            f_resultado.setText(CalculadoraUtils.formatResult(resultado));
         } catch (NumberFormatException e) {
-            txtResultado.setText("Error: Entrada inválida");
+            f_resultado.setText("Error: Entrada inválida");
         }
     }
 
@@ -443,13 +438,13 @@ public class CalculadoraCientificaControlador {
     @FXML
     public void onClickLogaritmo() {
         try {
-            double valor = Double.parseDouble(txtEntrada.getText());
+            double valor = Double.parseDouble(label_historial.getText());
             double resultado = calcCientifica.calcularLogaritmo(valor);
-            txtResultado.setText(CalculadoraUtils.formatResult(resultado));
+            f_resultado.setText(CalculadoraUtils.formatResult(resultado));
         } catch (NumberFormatException e) {
-            txtResultado.setText("Error: Entrada inválida");
+            f_resultado.setText("Error: Entrada inválida");
         } catch (IllegalArgumentException e) {
-            txtResultado.setText("Error: " + e.getMessage());
+            f_resultado.setText("Error: " + e.getMessage());
         }
     }
 

@@ -9,17 +9,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="519.0" prefWidth="365.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.calculadora.CalculadoraCientificaControlador">
+<AnchorPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.calculadora.CalculadoraCientificaControlador">
    <children>
-      <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="509.0" prefWidth="351.0" spacing="20.0">
+      <VBox alignment="CENTER" layoutX="5.0" layoutY="5.0" spacing="20.0">
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
          <children>
-            <Pane prefHeight="364.0" prefWidth="283.0">
+            <Pane>
                <children>
-                  <Label fx:id="f_resultado" alignment="CENTER_RIGHT" layoutX="11.0" layoutY="61.0" prefHeight="53.0" prefWidth="237.0" textAlignment="RIGHT">
+                  <Label fx:id="f_resultado" alignment="CENTER_RIGHT" layoutX="11.0" layoutY="61.0" prefHeight="53.0" prefWidth="294.0" textAlignment="RIGHT">
                      <font>
                         <Font size="36.0" />
                      </font>
@@ -71,7 +70,7 @@
                               <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" text="X^" />
                            </children>
                         </VBox>
-                        <VBox prefHeight="225.0" prefWidth="55.0" spacing="10.0">
+                        <VBox prefHeight="225.0" prefWidth="42.0" spacing="10.0">
                            <children>
                               <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" text="sin" />
                               <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="38.0" text="cos" />
@@ -81,7 +80,7 @@
                         </VBox>
                      </children>
                   </HBox>
-                  <Label fx:id="label_historial" alignment="CENTER_RIGHT" layoutX="11.0" layoutY="22.0" prefHeight="17.0" prefWidth="237.0" text="Historial" textAlignment="RIGHT" />
+                  <Label fx:id="label_historial" alignment="CENTER_RIGHT" layoutX="-8.0" layoutY="4.0" prefHeight="35.0" prefWidth="313.0" text="Historial" textAlignment="RIGHT" />
                </children>
             </Pane>
          </children>
